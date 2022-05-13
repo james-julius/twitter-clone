@@ -7,7 +7,7 @@ class FollowController < ApplicationController
 
   def delete
     @user = User.find(params[:id])
-    @follow = Follow.find(:first, conditions: ['follower = ? AND followed_user = ?', current_user.id, @user.id])
+    @follow = Follow.find_by(follower_id: current_user.id, followed_user_id: @user.id)
     Follow.destroy(@follow.id)
   end
 end

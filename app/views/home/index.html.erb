@@ -6,7 +6,11 @@
     <h1 class="font-bold text-4xl">Your Feed</h1>
     <%= link_to 'New post', new_post_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
-  <div id="posts" class="min-w-full">
-    <%= render @posts %>
+  <div id="posts" class="min-w-full py-8 px-1">
+    <% if @posts.any? %>
+      <%= render @posts %>
+    <% else %>
+      Follow people to find posts on your feed!
+    <% end %>
   </div>
 </div>

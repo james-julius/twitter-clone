@@ -24,9 +24,9 @@
       <h4 class="font-bold">
         Followers
       </h4>
-      <div class="mt-4 overflow-y-scroll h-4/5">
+      <div class="mt-4 overflow-y-auto h-4/5">
         <% if @user.followers.any? %>
-          <%= render @user.followers, enableFollowUnfollow: true %>
+          <%= render "inline_profile", collection: @user.followers, enableFollowUnfollow: true %>
         <% else %>
           <% if @is_current_user %>
             You haven't followed anyone just yet. Find people from the 'Discover' tab!
@@ -40,9 +40,9 @@
       <h4 class="font-bold">
         Follows
       </h4>
-      <div class="mt-4 overflow-y-scroll h-4/5">
+      <div class="mt-4 overflow-y-auto h-4/5">
         <% if @user.given_follows.any? %>
-          <%= render @user.followers, enableFollowUnfollow: true %>
+          <%= render "inline_profile", collection: @user.followers, enableFollowUnfollow: true %>
         <% else %>
           <% if @is_current_user %>
             Nobody's following you just yet.

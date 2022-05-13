@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   #   root 'pages#landing', as: :unauthenticated_root
   # end
 
-  resources :profiles, only: %i[index show] do 
+  resources :profiles, only: %i[index show] do
     resources :posts
   end
 
@@ -23,6 +23,6 @@ Rails.application.routes.draw do
 
   resources :home
 
-  post "follow", to: "follow#new"
-  delete "follow/delete", to: "follow#delete"
+  post 'follow', to: 'follow#new'
+  delete 'follow/delete', to: 'follow#delete'
 end

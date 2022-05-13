@@ -6,10 +6,16 @@
     <span class="bold my-auto w-1/2">
       <%= user.username || user.email %>
     </span>
-    <% if current_user.given_follows.include? current_user.id %>
-      <%= button_to "Unfollow", "follow#delete", remote: true, method: :delete, params: { id: user.id }, class:"p-2 border my-auto mr-2 w-20 bg-slate-200 hover:bg-slate-300 cursor-pointer rounded p-4" %>
-    <% else %>
-      <%= button_to "Follow", "follow#new", remote: true, method: :post, params: { id: user.id }, class:"p-2 border my-auto mr-2 w-20 bg-slate-200 hover:bg-slate-300 cursor-pointer rounded p-4" %>
-    <% end %>
+    <div class="inline-flex h-full">
+      <%= link_to "View Profile", profile_path(user), class:"p-2 border my-auto mr-2 w-30 bg-slate-200 hover:bg-slate-300 cursor-pointer rounded p-4" %>
+      <% print("HERE HERE HERE ")%>
+      <% unless current_user.id == user.id %>
+        <% if user.followers.any? { |u| u.id == current_user.id}  %>
+          <%= button_to "Unfollow", follow_delete_path(id: user.id), remote: true, method: :delete, class:"p-2 border my-auto mr-2 w-30 bg-slate-200 hover:bg-slate-300 cursor-pointer rounded p-4" %>
+        <% else %>
+          <%= button_to "Follow", follow_path(id: user.id), remote: true, method: :post, class:"p-2 border my-auto mr-2 w-30 bg-slate-200 hover:bg-slate-300 cursor-pointer rounded p-4" %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
