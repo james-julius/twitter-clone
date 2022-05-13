@@ -8,7 +8,10 @@ class PostsController < ApplicationController
   end
 
   # GET /posts/1 or /posts/1.json
-  def show; end
+  def show
+    print(@post.user.id)
+    @post_creator = User.find(@post.user.id)
+  end
 
   # GET /posts/new
   def new
@@ -21,7 +24,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post.user.id = current_user.id
 
     respond_to do |format|
       if @post.save
@@ -55,6 +58,16 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def like_post
+    @post.likes = @post.likes + 1
+    puts
+  end
+
+  def unlike_post
+    @post.likes = @post.likes ? @post.likes - 1 : 0
+    puts
   end
 
   private
