@@ -1,0 +1,7 @@
+<div id="<%= dom_id profile %>" class="w-full bg-red-400">
+  <%= profile.username || "No Username" %>
+  <% if enableFollowUnfollow %>
+    <%= button_to "Follow", "follow#new", remote: true, method: :post, params: { id: profile.id }, class:"red-400 p-4" %>
+    <%= button_to "Unfollow", "follow#delete", remote: true, method: :delete, params: { id: profile.id }, class:"red-400 p-4" %>
+  <% end %>
+</div>

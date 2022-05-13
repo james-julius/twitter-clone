@@ -2,12 +2,15 @@
 
 user_one:
   email: james@test.com
+  username: jamesjulius
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 user_two:
   email: alex@test.com
+  username: alexthegreat
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password')
 
 admin:
   email: admin@test.com
+  username: admin
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

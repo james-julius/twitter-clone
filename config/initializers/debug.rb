@@ -1,0 +1,1 @@
+require 'debug/open_nonstop' if Rails.env == 'development' || Rails.env == 'test'

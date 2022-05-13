@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_11_061522) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_12_004046) do
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id"
+    t.string "followed_user_id"
+    t.string "integer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "content"
     t.integer "likes"
@@ -29,13 +37,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_11_061522) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "follows_id"
     t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["follows_id"], name: "index_users_on_follows_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "posts", "users"
-  add_foreign_key "users", "users", column: "follows_id"
 end
